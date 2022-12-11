@@ -1,5 +1,9 @@
+import { render } from "react-dom";
+import App from "./components/App";
 import "./styles/index.scss";
 import bookmark from './assets/bookmark.svg';
+
+render(<App />, document.getElementById('root'));
 
 const elvenShieldRecipe = {
     leatherStrips: 2,

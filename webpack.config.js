@@ -15,7 +15,7 @@ console.log("process.env.NODE_ENV = " + process.env.NODE_ENV);
 module.exports = {
     mode: mode,
     target: target,
-    
+
     entry: path.resolve(__dirname, 'src/index.js'),
     // entry: './src/index.js',
     
@@ -52,6 +52,10 @@ module.exports = {
         // new BundleAnalyzerPlugin(),
     ],
 
+    resolve: {
+        extensions: [".js", ".jsx"],
+    },
+
     module: {
         rules: [
             {
@@ -65,13 +69,14 @@ module.exports = {
             },
 
             {
-                test: /\.js$/,
+                test: /\.jsx?$/i,
                 exclude: /node_modules/, 
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
+                        presets: ['@babel/preset-env']
+                        // presets: ['@babel/preset-env', '@babel/preset-react']
+                   }
                 }
             },
 
