@@ -37,7 +37,7 @@ module.exports = {
         // path: path.join(__dirname, '/dist'),
         publicPath: '/dist',
         filename: 'main.js',
-        assetModuleFilename: '[name][ext]',
+        assetModuleFilename: 'images/[hash][ext]',
         // filename: 'bundle.js'
         clean: true,
     },
@@ -59,8 +59,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.s?css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"],
+                test: /\.(s[ac]|c)ss$/i,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {publicPath: ""},
+                    }, 
+                    'css-loader',
+                    "sass-loader",
+                ],
             },
 
             {
@@ -81,8 +88,15 @@ module.exports = {
             },
 
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource'
+                test: /\.(png|svg|jpe?g|gif)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 30 * 1024,
+                    },
+                },
+                // type: 'asset/inline',
+                // type: 'asset/resource',
             },
         ]
     }

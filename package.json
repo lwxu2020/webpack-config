@@ -4,7 +4,8 @@
     "start": "cross-env SERVE=true webpack serve",
     "watch": "webpack --watch",
     "build": "cross-env NODE_ENV=production webpack",
-    "build-dev": "webpack"
+    "build-dev": "webpack",
+    "clean": "rmdir /Q /S dist"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

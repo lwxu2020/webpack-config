@@ -5,3 +5,17 @@ body {
     background-color: variables.$bg;
     color: var(--text);
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style-image: url("../images/dagger-48.png");
+}
