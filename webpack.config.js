@@ -1,52 +1,84 @@
-let mode = "development";
-const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+let mode = "development";
+let target = "web";
+
+const path = require('path');
 
 if (process.env.NODE_ENV === "production") {
     mode = "production";
 }
+console.log("process.env.NODE_ENV = " + process.env.NODE_ENV);
 
 module.exports = {
     mode: mode,
-    entry: './src/index.js',
+    target: target,
+    
+    entry: path.resolve(__dirname, 'src/index.js'),
+    // entry: './src/index.js',
     
     devtool: "source-map",
 
     devServer: {
         static: { 
-            directory: path.join(__dirname, "/dist") 
+            directory: path.resolve(__dirname, "dist") 
         },
         compress: true,
-        port: 8080
+        port: 8080,
+        open: false,
+        hot: true,
+        historyApiFallback: true
     },
 
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.resolve(__dirname, 'dist'),
+        // path: path.join(__dirname, '/dist'),
         publicPath: '/dist',
-        filename: 'main.js'        
+        filename: 'main.js',
+        assetModuleFilename: '[name][ext]',
         // filename: 'bundle.js'
+        clean: true,
     },
 
     plugins: [
+        new MiniCssExtractPlugin(),
         new HTMLWebpackPlugin({
-            template: './src/index.html'
-        })
+            title: 'Webpack Project',
+            filename: 'index.html',
+            template: 'src/template.html'
+        }),
+        // new BundleAnalyzerPlugin(),
     ],
 
     module: {
         rules: [
+            {
+                test: /\.s?css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"],
+            },
 
             {
-                test: /.js$/,
+                test: /\.sass$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+
+            {
+                test: /\.js$/,
                 exclude: /node_modules/, 
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                        // presets: ['@babel/preset-env', '@babel/preset-react']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
-            }
+            },
+
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
+            },
         ]
     }
 }
