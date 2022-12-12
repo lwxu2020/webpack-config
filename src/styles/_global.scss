@@ -12,6 +12,17 @@ main {
     align-items: center;
 }
 
+.area1 {
+    margin: 10px;
+    padding: 10px;
+    background-color:azure;
+    border-color: gray;
+    border-radius: 10px;
+    align-items: start;
+    align-self: center;
+    width: 70%;
+}
+
 button {
     font-size: 1.5rem;
 }
