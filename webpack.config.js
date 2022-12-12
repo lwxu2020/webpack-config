@@ -35,7 +35,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         // path: path.join(__dirname, '/dist'),
-        publicPath: '/dist',
+        // publicPath: 'dist',
         filename: 'main.js',
         assetModuleFilename: 'images/[hash][ext]',
         // filename: 'bundle.js'
