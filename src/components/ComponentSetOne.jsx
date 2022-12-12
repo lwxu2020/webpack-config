@@ -1,6 +1,15 @@
 import {Button, Checkbox, Select, TextField, Accordion, Alert, AlertTitle} from "@mui/material";
+import { Menu, MenuItem, Fade, Pagination, Box, Tabs, Tab, TabPanel } from '@mui/material';
+import * as React from 'react';
 
 const ComponentSetOne = () => {
+
+    const [value, setValue] = React.useState(2);
+
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+
     return (
         <>
             <div className="area1">
@@ -35,8 +44,18 @@ const ComponentSetOne = () => {
                 <br/>
             </div>
             <div className="area1">
-                
+                <Pagination count={10} color="primary" />
+                <Pagination count={10} variant="outlined" shape="rounded" />
+                <Pagination count={10} showFirstButton showLastButton />
             </div>
+
+            <div className="area1">
+                <Tabs value={value} onChange={handleChange} aria-label="disabled tabs example">
+                    <Tab label="Active" />
+                    <Tab label="Disabled" disabled />
+                    <Tab label="Active" />
+                </Tabs>
+            </div>            
         </>
     )
 }
