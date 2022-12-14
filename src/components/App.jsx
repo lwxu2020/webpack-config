@@ -4,6 +4,7 @@ import swordSvg from "../images/swords.svg";
 import Recipes from "./Recipes";
 import Buttons from "./Buttons";
 import ComponentSetOne from "./ComponentSetOne";
+import ComponentSetTwo from "./ComponentSetTwo";
 import { AppBar, Toolbar, IconButton, Typography, MenuClassKeyItem } from "@mui/material";
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -35,6 +36,7 @@ const App = () => {
                 <br/><br/> */}
                 <Buttons /><br/>
                 <ComponentSetOne /><br/>
+                <ComponentSetTwo /><br/>
                 <Recipes />
             </main>
         </>

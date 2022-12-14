@@ -1,9 +1,11 @@
-import { render } from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import "./styles/index.scss";
 import bookmark from './assets/bookmark.svg';
 
-render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
 
 const elvenShieldRecipe = {
     leatherStrips: 2,
@@ -17,8 +19,8 @@ const elvenGauntletsRecipe = {
     refinedMoonstone: 4,
 };
 
-const bmImg = document.getElementById('bkmark')
-bmImg.src = bookmark
+// const bmImg = document.getElementById('bkmark')
+// bmImg.src = bookmark
 
 console.log(elvenShieldRecipe);
 console.log(elvenGauntletsRecipe);
