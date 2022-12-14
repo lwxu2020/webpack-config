@@ -3,11 +3,8 @@ import * as React from 'react';
 
 const ComponentSetTwo = () => {
 
-    const [checked, setChecked] = React.useState(true);
-
-    const handleChange = (event, newValue) => {
-        setChecked(newValue);
-    };
+    const [protection, setProtection] = React.useState(false);
+    const [giftCard, setGiftCard] = React.useState(false);
 
     return (
         <>
@@ -36,18 +33,27 @@ const ComponentSetTwo = () => {
                         defaultValue="female"
                         name="radio-buttons-group"
                     >
-                        <FormControlLabel value="female" control={<Radio />} label="Female" />
-                        <FormControlLabel value="male" control={<Radio />} label="Male" />
-                        <FormControlLabel value="other" control={<Radio />} label="Other" />
+                        <FormControlLabel value="female" control={<Radio />} label="Female" labelPlacement="end" />
+                        <FormControlLabel value="male" control={<Radio />} label="Male" labelPlacement="end" />
+                        <FormControlLabel value="other" control={<Radio />} label="Other" labelPlacement="end" />
                     </RadioGroup>
                 </FormControl>
                 <br/><br/>
                 <FormControlLabel
                     control={
-                        <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)}
+                        <Checkbox checked={protection} onChange={(e) => setProtection(e.target.checked)}
                             inputProps={{'arial-label': 'secondary checkbox'}} />
                     }
-                    label="Testing Checkbox"
+                    label="Add Protection Plan"
+                    labelPlacement="end" 
+                /> &nbsp;
+                <FormControlLabel
+                    control={
+                        <Checkbox checked={giftCard} onChange={(e) => setGiftCard(e.target.checked)}
+                            inputProps={{'arial-label': 'secondary checkbox'}} />
+                    }
+                    label="Add Gift Card"
+                    labelPlacement="end" 
                 />
             </div>
         </>
