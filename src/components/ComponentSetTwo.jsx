@@ -21,6 +21,10 @@ const ComponentSetTwo = () => {
                     <FormHelperText>Please enter birthday</FormHelperText>
                     <TextField variant="outlined" color="secondary" type="date" size="small"/>
                 </FormControl><br/><br/>
+                <FormControl sx={{width:'25ch'}}  margin="normal">
+                    <FormHelperText>Please enter asset date</FormHelperText>
+                    <TextField variant="outlined" color="secondary" type="month" size="small"/>
+                </FormControl><br/><br/>
                 <TextField  margin="dense" variant="outlined" color="secondary" helperText="Please enter your Name" label="Your Name" type="text"  size="small"/>&nbsp;
                 <TextField  margin="dense" variant="outlined" color="secondary" helperText="Please enter your Age" label="Your Age" type="number"  size="small"/><br/>
                 <br/><br/>
