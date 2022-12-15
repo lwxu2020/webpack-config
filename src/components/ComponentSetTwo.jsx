@@ -14,6 +14,18 @@ const ComponentSetTwo = () => {
                     <Input id="my-input" aria-describedby="my-helper-text" />
                     <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
                 </FormControl> &nbsp;&nbsp;
+                <FormControl margin="normal">
+                    <TextField 
+                        variant="outlined" 
+                        color="secondary" 
+                        type="email"
+                        size="small"
+                        label="Your email" 
+                        placeholder="test@test.com" 
+                        helperText="Please enter your email"/>
+                </FormControl>
+                <br/><br/>
+
                 <FormControl sx={{width:'25ch'}}  margin="normal">
                     <FormHelperText>Please enter birthday</FormHelperText>
                     <TextField variant="outlined" color="secondary" type="date" size="small"/>
