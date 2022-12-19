@@ -6,6 +6,7 @@ import Buttons from "./Buttons";
 import ComponentSetOne from "./ComponentSetOne";
 import ComponentSetTwo from "./ComponentSetTwo";
 import ComponentSetThree from "./ComponentSetThree";
+import ComponentSetFour from "./ComponentSetFour";
 import { AppBar, Toolbar, IconButton, Typography, MenuClassKeyItem } from "@mui/material";
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -39,6 +40,7 @@ const App = () => {
                 <ComponentSetOne /><br/>
                 <ComponentSetTwo /><br/>
                 <ComponentSetThree /><br/>
+                <ComponentSetFour /><br/>
                 <Recipes />
             </main>
         </>
