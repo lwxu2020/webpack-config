@@ -24,6 +24,7 @@ import Cloud from '@mui/icons-material/Cloud';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
 import * as React from 'react';
 
 const ComponentSetThree = () => {
