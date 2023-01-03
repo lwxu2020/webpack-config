@@ -1,4 +1,4 @@
-import {Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Select, Menu, MenuItem, MenuList, InputLabel, InputBase, Input, OutlinedInput, FormLabel, FormHelperText, FormControl, FormControlLabel, TextField, Typography } from "@mui/material";
+import {Button, Container, CssBaseline, CircularProgress, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, Grid, Select, Menu, MenuItem, MenuList, InputLabel, InputBase, Input, OutlinedInput, FormLabel, FormHelperText, FormControl, FormControlLabel, TextField, Typography } from "@mui/material";
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -68,6 +68,60 @@ function DraggableDialog(props) {
     );
 }
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
+function AlertDialogSlide(props) {
+    return (
+      <div>
+        <Dialog
+          open={props.open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={props.handleClose}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Let Google help apps determine location. This means sending anonymous
+              location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={props.handleClose}>Disagree</Button>
+            <Button onClick={props.handleClose}>Agree</Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  }
+
+function CircularIndeterminate() {
+    return (
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    );
+} 
+
+function CircularColor() {
+    return (
+        <Stack sx={{ color: 'grey.500' }} 
+             spacing={10} 
+             justifyContent="center" 
+             direction="row"
+             divider={<Divider orientation="vertical" flexItem />}
+        >
+
+        <CircularProgress color="secondary" />
+        <CircularProgress color="success" />
+        <CircularProgress color="inherit" />
+      </Stack>
+    );
+}
+
 const ComponentSetFour = () => {
     const [open, setOpen] = React.useState(false);
 
@@ -79,16 +133,62 @@ const ComponentSetFour = () => {
       setOpen(false);
     };
 
+    const [openAlertDialogSlide, setOpenAlertDialogSlide] = React.useState(false);
+
+    const handleClickOpenAlertDialogSlide = () => {
+        setOpenAlertDialogSlide(true);
+    };
+    
+    const handleCloseOpenAlertDialogSlide = () => {
+        setOpenAlertDialogSlide(false);
+    };
+
     return (
         <div className="area1">
             <div>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Open draggable dialog
-                </Button>                
+                <Stack 
+                    direction="row" 
+                    justifyContent="center" 
+                    alignItems="center" 
+                    spacing={2}
+                    divider={<Divider orientation="vertical" flexItem />}
+                >
+                    <Button variant="outlined" onClick={handleClickOpen}>
+                        Open draggable dialog
+                    </Button>
+                    <Button variant="outlined" onClick={handleClickOpenAlertDialogSlide}>
+                        Slide in alert dialog
+                    </Button>
+                </Stack>
             </div>
             <div>
                 <DraggableDialog open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} />
             </div>
+            <div>
+                <AlertDialogSlide open={openAlertDialogSlide} handleClose={handleCloseOpenAlertDialogSlide} />
+            </div>
+            <br/><br/>
+            <div>
+                <CircularColor />
+            </div>
+            <br/><br/>
+            <React.Fragment>
+                <CssBaseline />
+                <Container fixed>
+                    <Box sx={{ bgcolor: '#cfe8fc', height: '50vh', width: '100%' }}>
+                        {/* <DataGridPro
+                            {...data}
+                            loading={data.rows.length === 0}
+                            rowHeight={38}
+                            checkboxSelection
+                            disableSelectionOnClick
+                            experimentalFeatures={{ newEditingApi: true }}
+                        /> */}
+                    </Box>
+                </Container>
+            </React.Fragment>
+            <br/><br/>
+
         </div>
     )
 }
