@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  webpack_app:
+    container_name: webpack_app
+    image: webpack_app
+    volumes:
+      - db-data:/etc/data
+    environment:
+      - NODE_ENV=development
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:80
+volumes:
+  db-data:

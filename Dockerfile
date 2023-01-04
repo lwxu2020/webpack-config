@@ -4,7 +4,7 @@ FROM node:16.17.0 as build
 # ENV NODE_ENV=production
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+#COPY package*.json ./
 #ENV PATH="/usr/src/app/node_modules/.bin:$PATH"
 #COPY ["package.json", "package-lock.json*", "webpack.config.js*", "babel.config.js*", "npm-shrinkwrap.json*", "./"]
 #RUN npm install --production --silent && mv node_modules ../
